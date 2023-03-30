@@ -193,7 +193,7 @@ def test_daily_min(test_data, test_index, test_columns,
                 pd.to_datetime('2000-01-01 03:00'),
             ],
             ['A', 'B'],
-            [[4.0, 5.0]],
+            [[8.0, 3.0]],
             [datetime.date(2000,1,1)],
             ['A', 'B']
         ),
