@@ -169,33 +169,3 @@ def test_daily_min(test_data, test_index, test_columns,
         daily_min(pd.DataFrame(data=test_data, index=test_index, columns=test_columns)),
         pd.DataFrame(data=expected_data, index=expected_index, columns=expected_columns))
 
-# write tests for daily_std(data)
-@pytest.mark.parametrize(
-    "test_data, test_index, test_columns, expected_data, expected_index, expected_columns",
-    [
-        (
-            [[0.0, 0.4], [0.0, 0.4], [0.0, 0.4], [0.0, 0.6], [0.2, 0.2], [0.0, 0.4], [0.0, 0.8], [0.2, 0.6]],
-            [
-                pd.to_datetime('2005-12-01 23:00:00'),
-                pd.to_datetime('2005-12-01 23:15:00'),
-                pd.to_datetime('2005-12-01 23:30:00'),
-                pd.to_datetime('2005-12-01 23:45:00'),
-                pd.to_datetime('2005-12-02 00:00:00'),
-                pd.to_datetime('2005-12-02 00:15:00'),
-                pd.to_datetime('2005-12-02 00:30:00'),
-                pd.to_datetime('2005-12-02 00:45:00'),
-            ],
-            ['FP35', 'PL16'],
-            [[0.0, 0.1], [0.11547, 0.258199]],
-            [datetime.date(2005, 12, 1), datetime.date(2005, 12, 2)],
-            ['FP35', 'PL16']
-        ),
-    ]
-)
-def test_daily_std(test_data, test_index, test_columns, expected_data, expected_index, expected_columns):
-    """Test std function works with zeros and positive integers"""
-    from catchment.models import daily_std
-
-    pdt.assert_frame_equal(
-        daily_std(pd.DataFrame(data=test_data, columns=test_columns)),
-        pd.DataFrame(data=expected_data, columns=expected_columns))

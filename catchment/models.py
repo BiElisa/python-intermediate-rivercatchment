@@ -56,16 +56,3 @@ def daily_min(data):
     Index must be np.datetime64 compatible format."""
     return data.groupby(data.index.date).min()
 
-# exploratory data analysis
-# calculate descriptive statistics: mean, median, std, min, max, 25%, 50%, 75%
-
-def daily_stats(data):
-    """Calculate the daily statistics of a 2D data array.
-    Index must be np.datetime64 compatible format."""
-    return data.groupby(data.index.date).describe()
-
-# calculate daily standard deviation
-def daily_std(data):
-    """Calculate the daily standard deviation of a 2D data array.
-    Index must be np.datetime64 compatible format."""
-    return data.groupby(data.index.date).std()
