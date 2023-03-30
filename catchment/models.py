@@ -56,3 +56,12 @@ def daily_min(data):
     Index must be np.datetime64 compatible format."""
     return data.groupby(data.index.date).min()
 
+
+def daily_range(data):
+    """Calculate the range between the
+    minimum and maxmimum value.
+
+    :param data: 2D data array (Index must be np.datetime64 compatible format.)
+    :returns: Daily total
+    """
+    return data.groupby(data.index.date).max() - data.groupby(data.index.date).min()
