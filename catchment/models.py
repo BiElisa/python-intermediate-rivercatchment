@@ -57,5 +57,5 @@ def daily_min(data):
     return data.groupby(data.index.date).min()
 
 def daily_std(data):
-    """Calculate something"""
+    """Calculate standard deviation"""
     return data.groupby(data.index.date).std()
