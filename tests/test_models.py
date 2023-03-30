@@ -169,3 +169,42 @@ def test_daily_min(test_data, test_index, test_columns,
         daily_min(pd.DataFrame(data=test_data, index=test_index, columns=test_columns)),
         pd.DataFrame(data=expected_data, index=expected_index, columns=expected_columns))
 
+@pytest.mark.parametrize(
+    "test_data, test_index, test_columns, expected_data, expected_index, expected_columns",
+    [
+        (
+            [[0.0, 0.0], [0.0, 0.0], [0.0, 0.0]],
+            [
+                pd.to_datetime('2000-01-01 01:00'),
+                pd.to_datetime('2000-01-01 02:00'),
+                pd.to_datetime('2000-01-01 03:00'),
+            ],
+            ['A', 'B'],
+            [[0.0, 0.0]],
+            [datetime.date(2000,1,1)],
+            ['A', 'B']
+        ),
+        (
+            [[1.0, 4.0], [2.0, 5.0], [3.0, 6.0]],
+            [
+                pd.to_datetime('2000-01-01 01:00'),
+                pd.to_datetime('2000-01-01 02:00'),
+                pd.to_datetime('2000-01-01 03:00'),
+            ],
+            ['A', 'B'],
+            [[1.0, 1.0]],
+            [datetime.date(2000,1,1)],
+            ['A', 'B']
+        ),
+    ]
+)
+def test_daily_std(test_data, test_index, test_columns,
+                    expected_data, expected_index, expected_columns):
+    """Test min function works with zeros and positive integers"""
+    from catchment.models import daily_std
+
+    pdt.assert_frame_equal(
+        daily_std(pd.DataFrame(data=test_data, index=test_index, columns=test_columns)),
+        pd.DataFrame(data=expected_data, index=expected_index, columns=expected_columns))
+
+
