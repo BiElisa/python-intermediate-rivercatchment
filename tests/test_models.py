@@ -197,5 +197,5 @@ def test_daily_std(test_data, test_index, test_columns, expected_data, expected_
     from catchment.models import daily_std
 
     pdt.assert_frame_equal(
-        daily_std(pd.DataFrame(data=test_data, columns=test_columns)),
-        pd.DataFrame(data=expected_data, columns=expected_columns))
+        daily_std(pd.DataFrame(data=test_data, index=test_index, columns=test_columns)),
+        pd.DataFrame(data=expected_data, index=expected_index, columns=expected_columns))
